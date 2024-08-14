@@ -24,5 +24,5 @@ Não há dependências externas além das bibliotecas padrão do Python.
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/marqsleal/gera-produtos-vendas.git
    
