@@ -1,7 +1,7 @@
 import csv
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 def gerar_data_hora_aleatoria():
