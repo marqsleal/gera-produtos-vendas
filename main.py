@@ -1,6 +1,19 @@
 import csv
 import json
 import random
+from datetime import datetime, timedelta
+
+
+def gerar_data_hora_aleatoria():
+    ano = random.randint(2023, datetime.now().year)
+    mes = random.randint(1, 12)
+    dia = random.randint(1, 28)
+    hora = random.randint(0, 23)
+    minuto = random.randint(0, 59)
+    segundo = random.randint(0, 59)
+
+    data_hora = datetime(ano, mes, dia, hora, minuto, segundo)
+    return data_hora.strftime('%Y-%m-%d %H:%M:%S')
 
 
 def gerar_produtos(produtos, path):
@@ -14,7 +27,11 @@ def gerar_produtos(produtos, path):
 
 
 def gerar_venda(id_venda, produtos):
-    venda = {'id': id_venda, 'produtos': [], 'valor_total': 0.0}
+    venda = {
+        'id': id_venda,
+        'produtos': [],
+        'valor_total': 0.0,
+        'data_hora': gerar_data_hora_aleatoria()}
     num_produtos = random.randint(1, 5)
     produtos_selecionados = random.sample(produtos, num_produtos)
 
@@ -39,7 +56,7 @@ def gerar_venda(id_venda, produtos):
 
 def gerar_vendas(vendas, path):
     with open(path, mode='w', newline='') as file:
-        fieldnames = ['id', 'produtos', 'valor_total']
+        fieldnames = ['id', 'produtos', 'valor_total', 'data_hora']
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         for venda in vendas:
@@ -100,7 +117,7 @@ def main():
         {'id': 24, 'nome': 'notebook gigabyte u4 intel i5 1155g7 8gb 512gb m2', 'quantidade': 1, 'valor': 3239.91,
          'ativo': True, 'categoria': 'notebook'},
     ]
-    vendas = [gerar_venda(i + 1, produtos) for i in range(12)]
+    vendas = [gerar_venda(i + 1, produtos) for i in range(24)]
 
     # Path dos Documentos:
     path_produtos = "dados/produtos.csv"
