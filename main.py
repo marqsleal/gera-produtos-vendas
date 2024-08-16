@@ -5,10 +5,10 @@ from datetime import datetime
 
 
 def gerar_data_hora_aleatoria():
-    ano = random.randint(2023, datetime.now().year)
-    mes = random.randint(1, 12)
+    ano = 2024
+    mes = random.randint(1, 8)
     dia = random.randint(1, 28)
-    hora = random.randint(0, 23)
+    hora = random.randint(9, 17)
     minuto = random.randint(0, 59)
     segundo = random.randint(0, 59)
 
